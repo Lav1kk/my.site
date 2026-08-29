@@ -155,4 +155,58 @@
           <div class="card-cover"><div class="ico">⚙️</div></div>
           <div class="card-body">
             <div class="card-title">Устранение вашей рутины</div>
-            <div class="card-d
+            <div class="card-desc">Есть повторяющиеся задачи, на которые уходит слишком много времени? Расскажите, и я помогу их автоматизировать. Цену обсудим индивидуально — она зависит от объёма работы.</div>
+          </div>
+          <span class="card-price">от 1000 ₽</span>
+        </div>
+      </div>
+
+      <p class="hint">Подробнее об услугах можно узнать в личных сообщениях.</p>
+    </section>
+
+    <!-- Контакты -->
+    <section>
+      <span class="chip">📞 Контакты</span>
+      <h2>Связаться со мной</h2>
+      <p class="sub">Если нужно автоматизировать рутину — напишите или позвоните, подскажу, что подойдёт именно вам.</p>
+
+      <div class="contact-card">
+        <div class="c-icon">📞</div>
+        <div class="c-label">Телефон для связи</div>
+        <a class="c-value" href="tel:+79784562316">+7 978 456 23 16</a>
+
+        <div class="c-icon" style="margin-top:18px">✈️</div>
+        <div class="c-label">Telegram</div>
+        <a class="c-value" href="https://t.me/suxarjk_dev" target="_blank" rel="noopener noreferrer">@suxarjk_dev</a>
+
+        <div class="c-hint">Пишите в любое время, звоните после 15:00 и до 23:00</div>
+      </div>
+    </section>
+  </div>
+
+  <footer>© 2025 Матвей</footer>
+
+  <script>
+    const btn = document.getElementById('themeBtn');
+    const root = document.documentElement;
+
+    function applyTheme() {
+      const isDark = root.classList.contains('dark');
+      btn.textContent = isDark ? '☀️ Светлая тема' : '🌙 Тёмная тема';
+    }
+
+    btn.addEventListener('click', () => {
+      root.classList.toggle('dark');
+      try { localStorage.setItem('theme', root.classList.contains('dark') ? 'dark' : 'light'); } catch (e) {}
+      applyTheme();
+    });
+
+    try {
+      const saved = localStorage.getItem('theme');
+      if (saved === 'light') root.classList.remove('dark');
+      if (saved === 'dark') root.classList.add('dark');
+    } catch (e) {}
+    applyTheme();
+  </script>
+</body>
+</html>
