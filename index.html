@@ -8,204 +8,165 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --background: #fbfbfd;
-      --foreground: #1c1c22;
+      --bg: #fafafa;
+      --fg: #1a1a1a;
       --card: #ffffff;
-      --card-foreground: #1c1c22;
-      --primary: #4f46e5;
-      --primary-foreground: #fbfbfd;
-      --secondary: #e9ecfb;
-      --secondary-foreground: #3a3f66;
-      --muted: #f0f2f8;
-      --muted-foreground: #6a6b80;
-      --accent: #eceefa;
-      --accent-foreground: #3a3f66;
-      --border: rgba(0,0,0,0.10);
-      --radius: 12px;
+      --muted: #666666;
+      --primary: #4338ca;
+      --border: rgba(0,0,0,0.1);
+      --muted-chip: #eef0f6;
     }
 
     html.dark {
-      --background: #181820;
-      --foreground: #f4f4f7;
-      --card: #23232e;
-      --card-foreground: #f4f4f7;
-      --primary: #6d70f0;
-      --primary-foreground: #181820;
-      --secondary: #2e2e3d;
-      --secondary-foreground: #e0e1f2;
-      --muted: #2e2e3d;
-      --muted-foreground: #a3a3b5;
-      --accent: #2e2e3d;
-      --accent-foreground: #e0e1f2;
-      --border: rgba(255,255,255,0.10);
+      --bg: #14141a;
+      --fg: #f2f2f5;
+      --card: #202028;
+      --muted: #9d9da8;
+      --primary: #6366f1;
+      --border: rgba(255,255,255,0.12);
+      --muted-chip: #26262f;
     }
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      background: var(--background);
-      color: var(--foreground);
+      background: var(--bg);
+      color: var(--fg);
       min-height: 100vh;
       transition: background 0.3s ease, color 0.3s ease;
-      display: flex;
-      flex-direction: column;
     }
+
+    .wrap { max-width: 920px; margin: 0 auto; padding: 48px 20px 64px; }
 
     header.nav {
       position: sticky; top: 0; z-index: 50;
       display: flex; align-items: center; justify-content: space-between;
-      padding: 0 24px; height: 56px;
-      background: var(--background);
+      padding: 14px 24px;
+      background: var(--bg);
       border-bottom: 1px solid var(--border);
       backdrop-filter: blur(8px);
       transition: background 0.3s ease;
     }
-    .brand { display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 18px; letter-spacing: -0.01em; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 18px; }
     .brand-icon {
       width: 32px; height: 32px; border-radius: 8px;
-      background: var(--primary); color: var(--primary-foreground);
-      display: flex; align-items: center; justify-content: center;
+      background: var(--primary); color: #fff;
+      display: flex; align-items: center; justify-content: center; font-size: 16px;
     }
     .theme-btn {
-      width: 36px; height: 36px; border-radius: 8px;
-      border: none; background: transparent; color: var(--foreground);
-      cursor: pointer; position: relative;
-      display: flex; align-items: center; justify-content: center;
+      border: 1px solid var(--border); background: transparent; color: var(--fg);
+      border-radius: 8px; padding: 8px 12px; font-size: 14px; cursor: pointer;
+      transition: background 0.2s ease;
     }
-    .theme-btn:hover { background: var(--muted); }
-    .theme-btn svg { position: absolute; width: 16px; height: 16px; transition: transform 0.2s ease, opacity 0.2s ease; }
+    .theme-btn:hover { background: var(--card); }
 
-    .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; flex: 1; }
-
-    section.hero { position: relative; padding: 80px 0 40px; text-align: center; }
-    .hero-bg {
-      position: absolute; top: 0; left: 0; right: 0; height: 448px;
-      background: linear-gradient(to bottom, rgba(79,70,229,0.15), rgba(79,70,229,0.05), transparent);
-      pointer-events: none;
-    }
-    .section-inner { position: relative; max-width: 640px; margin: 0 auto; }
+    section { text-align: center; margin-top: 56px; }
     .chip {
-      display: inline-flex; align-items: center; gap: 6px; height: 20px;
-      padding: 0 8px; border-radius: 999px;
-      background: var(--secondary); color: var(--secondary-foreground);
-      font-size: 12px; font-weight: 500; margin-bottom: 16px;
+      display: inline-block; padding: 4px 14px; border-radius: 999px;
+      background: var(--muted-chip); color: var(--fg); font-size: 13px;
+      font-weight: 600; margin-bottom: 16px;
     }
-    h1 { font-size: 48px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; }
-    .role { font-size: 20px; color: var(--foreground); opacity: 0.8; margin-top: 16px; font-weight: 400; }
-    .about { font-size: 16px; line-height: 1.7; color: var(--muted-foreground); max-width: 576px; margin: 16px auto 0; }
+    h1 { font-size: 40px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; }
+    h2 { font-size: 30px; font-weight: 800; letter-spacing: -0.02em; margin-top: 8px; }
+    .role { font-size: 21px; color: var(--muted); margin-top: 12px; font-weight: 500; }
+    .about { font-size: 16px; line-height: 1.7; color: var(--muted); max-width: 640px; margin: 20px auto 0; }
+    .sub { color: var(--muted); margin-top: 8px; font-size: 15px; }
 
-    section.block { margin-top: 48px; text-align: center; }
-    h2 { font-size: 30px; font-weight: 700; letter-spacing: -0.02em; margin-top: 8px; }
-    .sub { color: var(--muted-foreground); margin-top: 8px; font-size: 15px; }
-
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 32px; text-align: left; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 32px; }
     .card {
-      background: var(--card); color: var(--card-foreground);
-      border-radius: var(--radius); overflow: hidden;
-      display: flex; flex-direction: column; gap: 16px; padding: 16px 0 0;
-      box-shadow: 0 0 0 1px var(--border);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+      overflow: hidden; text-align: left; transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
-    .card:hover { transform: translateY(-2px); box-shadow: 0 0 0 1px var(--border), 0 12px 24px -8px rgba(0,0,0,0.3); }
+    .card:hover { transform: translateY(-3px); box-shadow: 0 14px 28px -10px rgba(0,0,0,0.25); }
     .card-cover {
-      aspect-ratio: 16/10; display: flex; align-items: center; justify-content: center;
-      background: linear-gradient(135deg, rgba(79,70,229,0.2), rgba(79,70,229,0.1), transparent);
+      aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, rgba(99,102,241,0.25), rgba(99,102,241,0.05));
     }
-    .card-ico {
+    .card-cover .ico {
       width: 64px; height: 64px; border-radius: 16px; background: var(--card);
-      display: flex; align-items: center; justify-content: center; color: var(--primary);
-      box-shadow: 0 0 0 1px rgba(0,0,0,0.1);
+      display: flex; align-items: center; justify-content: center; font-size: 30px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
     }
-    .card-body { padding: 0 16px; }
-    .card-title { font-size: 16px; font-weight: 500; line-height: 1.35; }
-    .card-desc { font-size: 14px; line-height: 1.6; color: var(--muted-foreground); margin-top: 8px; }
-    .card-footer { display: flex; align-items: center; padding: 16px; border-top: 1px solid var(--border); background: var(--muted); opacity: 0.5; margin-top: 4px; }
-    .card-price { font-size: 18px; font-weight: 600; }
+    .card-body { padding: 20px; }
+    .card-title { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+    .card-desc { font-size: 14px; line-height: 1.6; color: var(--muted); }
+    .card-price { display: block; padding: 16px 20px 20px; font-size: 18px; font-weight: 700; color: var(--primary); }
 
-    .hint { color: var(--muted-foreground); margin-top: 32px; font-size: 15px; }
+    .hint { color: var(--muted); margin-top: 28px; font-size: 15px; }
 
-    section.contact { margin-top: 64px; text-align: center; }
     .contact-card {
-      max-width: 448px; margin: 32px auto 0; background: var(--card); color: var(--card-foreground);
-      border-radius: var(--radius); padding: 40px 24px; text-align: center;
-      display: flex; flex-direction: column; align-items: center; gap: 12px;
-      box-shadow: 0 0 0 1px var(--border);
+      max-width: 460px; margin: 32px auto 0; background: var(--card);
+      border: 1px solid var(--border); border-radius: 16px; padding: 40px 24px;
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
     }
     .c-icon {
-      width: 56px; height: 56px; border-radius: 16px; background: var(--secondary); color: var(--primary);
-      display: flex; align-items: center; justify-content: center;
+      width: 52px; height: 52px; border-radius: 14px; background: rgba(99,102,241,0.15);
+      color: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 24px;
+      margin-bottom: 6px;
     }
-    .c-label { font-size: 14px; color: var(--muted-foreground); }
-    .c-value { font-size: 24px; font-weight: 600; letter-spacing: -0.01em; text-decoration: none; color: var(--card-foreground); }
+    .c-label { font-size: 13px; color: var(--muted); }
+    .c-value { font-size: 24px; font-weight: 700; letter-spacing: -0.01em; text-decoration: none; color: var(--fg); }
     .c-value:hover { color: var(--primary); }
-    .c-sep { margin-top: 8px; }
-    .c-hint { font-size: 14px; color: var(--muted-foreground); margin-top: 8px; }
+    .c-hint { font-size: 14px; color: var(--muted); margin-top: 10px; }
 
-    footer { border-top: 1px solid var(--border); text-align: center; padding: 24px; font-size: 13px; color: var(--muted-foreground); margin-top: 48px; }
+    footer { border-top: 1px solid var(--border); text-align: center; padding: 20px; font-size: 13px; color: var(--muted); margin-top: 48px; }
   </style>
 </head>
 <body>
   <header class="nav">
     <div class="brand">
-      <div class="brand-icon">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg>
-      </div>
-      Мой сервис
+      <div class="brand-icon">✦</div>
+      Матвей
     </div>
-    <button class="theme-btn" id="themeBtn" aria-label="Переключить тему">
-      <svg class="sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
-      <svg class="moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
-    </button>
+    <button class="theme-btn" id="themeBtn" aria-label="Переключить тему">🌙 Светлая тема</button>
   </header>
 
   <div class="wrap">
     <!-- Обо мне -->
-    <section class="hero">
-      <div class="hero-bg"></div>
-      <div class="section-inner">
-        <span class="chip">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-          Обо мне
-        </span>
-        <h1>Привет, я Матвей</h1>
-        <p class="role">Автоматизирую рутину и экономлю ваше время</p>
-        <p class="about">Знаете, как бывает: компания работает хорошо, а рутинные задачи — ответы на отзывы, переписка, повторяющиеся действия — каждый день забирают время и силы. Я помогаю автоматизировать такую рутину, чтобы вы могли заниматься тем, что действительно важно. Не ограничиваюсь одной услугой: подбираю решение под конкретную задачу и делаю так, чтобы оно работало спокойно и по-человечески.</p>
-      </div>
+    <section>
+      <span class="chip">👤 Обо мне</span>
+      <h1>Привет, я Матвей</h1>
+      <p class="role">Автоматизирую рутину и экономлю ваше время</p>
+      <p class="about">
+        Знаете, как бывает: компания работает хорошо, а рутинные задачи — ответы на отзывы,
+        переписка, повторяющиеся действия — каждый день забирают время и силы. Я помогаю
+        автоматизировать такую рутину, чтобы вы могли заниматься тем, что действительно важно.
+        Не ограничиваюсь одной услугой: подбираю решение под конкретную задачу и делаю так,
+        чтобы оно работало спокойно и по-человечески.
+      </p>
     </section>
 
     <!-- Услуги -->
-    <section class="block">
-      <span class="chip">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
-        Услуги
-      </span>
+    <section>
+      <span class="chip">✉️ Услуги</span>
       <h2>Что я могу сделать</h2>
       <p class="sub">Одна конкретная проблема — одно понятное решение.</p>
 
       <div class="grid">
         <div class="card">
-          <div class="card-cover">
-            <div class="card-ico">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2M20 14h2M15 13v2M9 13v2"/></svg>
-            </div>
+          <div class="card-cover"><div class="ico">🖥️</div></div>
+          <div class="card-body">
+            <div class="card-title">Создание сайта визитки с услугами/онлайн записью</div>
+            <div class="card-desc">Создам сайт визитку с услугами/онлайн записью, чтобы люди могли записаться в любое время и вы не теряли своих клиентов, экономит до 10 часов в неделю, если отвечаете всем своими силами. Экономит время, нервы, позволяет заниматься тем, что вам реально необходимо.</div>
           </div>
+          <span class="card-price">от 1500 ₽</span>
+        </div>
+
+        <div class="card">
+          <div class="card-cover"><div class="ico">🤖</div></div>
           <div class="card-body">
             <div class="card-title">Система в телеграм, для автоответа на отзывы в Яндекс картах</div>
             <div class="card-desc">Бот собирает отзывы с Яндекс карт, после чего генерирует на них ответ и предлагает владельцу отправить, перефразировать, ничего не отвечать. Можно настроить так, чтобы отвечал сам.</div>
           </div>
-          <div class="card-footer"><span class="card-price">1000 ₽</span></div>
+          <span class="card-price">1000 ₽</span>
         </div>
 
         <div class="card">
-          <div class="card-cover">
-            <div class="card-ico">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.93 4.93l2.12 2.12M16.95 16.95l2.12 2.12M4.93 19.07l2.12-2.12M16.95 7.05l2.12-2.12"/></svg>
-            </div>
-          </div>
+          <div class="card-cover"><div class="ico">⚙️</div></div>
           <div class="card-body">
             <div class="card-title">Устранение вашей рутины</div>
             <div class="card-desc">Есть повторяющиеся задачи, на которые уходит слишком много времени? Расскажите, и я помогу их автоматизировать. Цену обсудим индивидуально — она зависит от объёма работы.</div>
           </div>
-          <div class="card-footer"><span class="card-price">от 1000 ₽</span></div>
+          <span class="card-price">от 1000 ₽</span>
         </div>
       </div>
 
@@ -213,46 +174,34 @@
     </section>
 
     <!-- Контакты -->
-    <section class="contact">
-      <span class="chip">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        Контакты
-      </span>
+    <section>
+      <span class="chip">📞 Контакты</span>
       <h2>Связаться со мной</h2>
       <p class="sub">Если нужно автоматизировать рутину — напишите или позвоните, подскажу, что подойдёт именно вам.</p>
 
       <div class="contact-card">
-        <div class="c-icon">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        </div>
-        <div class="c-label">Телефон для связи</div>
-        <a class="c-value" href="tel:+79784562316">+7 978 456 23 16</a>
-
-        <div class="c-icon c-sep">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
-        </div>
+        <div class="c-icon">✈️</div>
         <div class="c-label">Telegram</div>
         <a class="c-value" href="https://t.me/suxarjk_dev" target="_blank" rel="noopener noreferrer">@suxarjk_dev</a>
+
+        <div class="c-icon" style="margin-top:18px">📞</div>
+        <div class="c-label">Телефон для связи</div>
+        <a class="c-value" href="tel:+79784562316">+7 978 456 23 16</a>
 
         <div class="c-hint">Пишите в любое время, звоните после 15:00 и до 23:00</div>
       </div>
     </section>
   </div>
 
-  <footer>© 2025 Мой сервис</footer>
+  <footer>© 2025 Матвей</footer>
 
   <script>
     const btn = document.getElementById('themeBtn');
     const root = document.documentElement;
-    const sun = btn.querySelector('.sun');
-    const moon = btn.querySelector('.moon');
 
     function applyTheme() {
       const isDark = root.classList.contains('dark');
-      sun.style.transform = isDark ? 'scale(0) rotate(90deg)' : 'scale(1) rotate(0)';
-      sun.style.opacity = isDark ? '0' : '1';
-      moon.style.transform = isDark ? 'scale(1) rotate(0)' : 'scale(0) rotate(-90deg)';
-      moon.style.opacity = isDark ? '1' : '0';
+      btn.textContent = isDark ? '☀️ Светлая тема' : '🌙 Тёмная тема';
     }
 
     btn.addEventListener('click', () => {
